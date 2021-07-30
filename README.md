@@ -1,4 +1,4 @@
-# Retail Manager System
+# Retail Manager Application
 
 ## Introduction
 This is a retail management system built for personal learning and particing purposes.
