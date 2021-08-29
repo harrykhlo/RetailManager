@@ -2,6 +2,7 @@ using System.Web.Http;
 using WebActivatorEx;
 using RMDataManager;
 using Swashbuckle.Application;
+using RMDataManager.App_Start;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
@@ -16,6 +17,14 @@ namespace RMDataManager
             GlobalConfiguration.Configuration
                 .EnableSwagger(c =>
                     {
+                        // a filter to run class AuthTokenOperation in RMDataManager.App_Start
+                        // The class AuthTokenOperation added a Auth category with a post command into swagger
+                        // In the post request command, the type of data shoulc come through as "application/x-www-form-urlencoded"
+                        // the definitions of three parameters are given below in a list of parameters
+                        // the three parameters are "grant_type", "username" and "password"
+                        // A default value of "grant_type" is given to be "password".
+                        c.DocumentFilter<AuthTokenOperation>();
+
                         // By default, the service root url is inferred from the request used to access the docs.
                         // However, there may be situations (e.g. proxy and load-balanced environments) where this does not
                         // resolve correctly. You can workaround this by providing your own code to determine the root URL.
