@@ -11,6 +11,7 @@ namespace RMDataManager.App_Start
     {
         public void Apply(SwaggerDocument swaggerDoc, SchemaRegistry schemaRegistry, IApiExplorer apiExplorer)
         {
+            // refer to https://stackoverflow.com/questions/51117655/how-to-use-swagger-in-asp-net-webapi-2-0-with-token-based-authentication
             swaggerDoc.paths.Add("/token", new PathItem // add a path /token into swagger
             {
                 // below added a Auth category with a post command into swagger
