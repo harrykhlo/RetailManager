@@ -4,6 +4,7 @@ using RMDataManager;
 using Swashbuckle.Application;
 using RMDataManager.App_Start;
 
+//Swagger will be disable if the following line is commented
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
 namespace RMDataManager
